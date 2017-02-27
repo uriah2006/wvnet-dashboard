@@ -10,12 +10,18 @@ Author URI: http://URI_Of_The_Plugin_Author
 License: A "Slug" license name e.g. GPL2
 */
 
-$page_title="WVNET Support Page";
-$menu_title="WVNET Support Page";
-$menu_slug="wvnetsupport";
 
-add_dashboard_page( $page_title, $menu_title, $capability, $menu_slug, $function = 'chat' );
-
-function chat (){
-
+function wpdocs_register_my_custom_menu_page() {
+	add_menu_page(
+		'WVNET Support',
+		'custom menu',
+		'manage_options',
+		'myplugin/myplugin-admin.php',
+		'',
+		plugins_url( 'myplugin/images/icon.png' ),
+		0
+	);
 }
+add_action( 'admin_menu', 'wpdocs_register_my_custom_menu_page' );
+
+
