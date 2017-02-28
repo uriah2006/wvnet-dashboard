@@ -30,8 +30,6 @@ Copyright 2017  Uriah Sypolt  (email : usypolt@mail.wvnet.edi)
 add_action( 'admin_menu', 'WVNET_admin_support_page' );
 
 function WVNET_admin_support_page() {
-	global $submenu;
-
 
 	add_menu_page(
 		'WVNET Support Page',
@@ -42,8 +40,16 @@ function WVNET_admin_support_page() {
 		plugins_url( '/images/wp-icon.png', __FILE__ ),
 		0);
 
-	$submenu['WVNET_admin_support'][501] = array( 'WVNET Chat', 'manage_options' , 'https://chat.wvnet.edu' );
-	$submenu['WVNET_admin_support'][502] = array( 'OZ ticketing system', 'manage_options' , 'https://chat.wvnet.edu' );
+	add_submenu_page( WVNET_admin_support, 'About My Plugin', 'About', 'manage_options',
+		__FILE__.'_about', boj_menuexample_about_page );
+
+
+	global $submenu;
+
+	//$submenu['WVNET_admin_support'][1] = array( 'Announcments', 'manage_options' , 'https://chat.wvnet.edu' );
+	//$submenu['WVNET_admin_support'][2] = array( 'WVNET Chat', 'manage_options' , 'https://chat.wvnet.edu' );
+	//$submenu['WVNET_admin_support'][3] = array( 'Submit OZ ticket', 'manage_options' , 'http://oz.wvnet.edu/ozwvnet/k12/' );
+
 }
 
 // Draw the options page
@@ -54,4 +60,4 @@ function WVNET_support_page() {
 
 	<?php
 }
-
+?>
